@@ -1,0 +1,9 @@
+rule test_rule:
+  output: "results/{letter}.txt"
+  shell:
+     """
+     hostname > {output}
+     """
+
+rule all:
+  input: expand("results/{letter}.txt", letter=["A", "B", "C"])

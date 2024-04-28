@@ -1,0 +1,21 @@
+---
+executor: slurm
+default-resources:
+  slurm_partition: savio3
+  slurm_account: <your_account>
+  mem_mb_per_cpu: 1800
+  cpus_per_task: 40
+  runtime: 60
+  gpus: 0
+jobs: 2
+restart-times: 2
+max-jobs-per-second: 5
+max-status-checks-per-second: 1
+local-cores: 1
+latency-wait: 120
+keep-going: true
+rerun-incomplete: true
+printshellcmds: true
+scheduler: greedy
+use-conda: true
+

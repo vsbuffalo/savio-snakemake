@@ -1,0 +1,2 @@
+snakemake>=8
+snakemake-executor-plugin-slurm
