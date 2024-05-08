@@ -1,7 +1,7 @@
 ---
 executor: slurm
 default-resources:
-  slurm_partition: savio3
+  slurm_partition: savio3_htc
   slurm_account: <your_account>
   mem_mb_per_cpu: 1800
   cpus_per_task: 40
