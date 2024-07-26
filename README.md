@@ -60,9 +60,10 @@ rule a:
   input: "some_infile.txt"
   output: "some_outfile.txt"
   resources:
-    mem_mb_per_cpu: 1800
-    cpus_per_task: 40
-    runtime: 60
+    slurm_partition = "savio2_bigmem",  # set custom partitions for certain jobs
+    mem_mb =64000,  # increasing this can solve out-of-memory erros
+    cpus_per_task = 40,
+    runtime = 60
   shell:
     """
     # some command
@@ -129,6 +130,13 @@ $ find .snakemake/slurm_logs/rule_test_rule/ -maxdepth 1
 ```
 
 to see rule-level log directories.
+
+## Debugging
+
+Slurm jobs during development often fail, and the added layers of complexity of the job scheduler can make debugging trickier. Here are some general tips:
+
+ 1. Look at the Slurm log — there are two logs, the Snakemake-level one and the standard output from the command in `.snakemake/slurm_logs`. Look at both.
+ 2. Look at what is being passed directly to the Slurm scheduler. New Snakemake versions do not write the scripts; they are just generated on the fly and passed into the scheduler. You can see them with `--verbose`: e.g. `snakemake --profile /global/home/users/vsb/dotfiles2/.config/snakemake/savio all -jobs 20  --verbose`.
 
 ## Issues & Future Additions
 
