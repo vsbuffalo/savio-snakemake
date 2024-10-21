@@ -47,10 +47,10 @@ $ snakemake --workflow-profile ~/.config/snakemake/savio all
 
 Note that this job will use **default resources** and only *two* jobs. This is 
 intentional, since the user should override the number of jobs on the command line
-with 
+with `-j/--jobs`
 
 ```bash
-$ snakemake --workflow-profile ~/.config/snakemake/savio all 
+$ snakemake --workflow-profile ~/.config/snakemake/savio all --jobs 4
 ```
 
 or, set the resources in the Snakemake rule itself, e.g. 
